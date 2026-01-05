@@ -18,15 +18,8 @@ cat << "EOF"
    ╚═╝   ╚═╝  ╚═╝╚═╝╚══════╝╚══════╝╚═╝  ╚═╝
 EOF
 
-echo -e "${YEL}Adding Cloudflare GPG Key{NC}"
-sudo mkdir -p --mode=0755 /usr/share/keyrings
-curl -fsSL https://pkg.cloudflare.com/cloudflare-public-v2.gpg | sudo tee /usr/share/keyrings/cloudflare-public-v2.gpg >/dev/null
+echo -e "${YEL}Installing Tailscale{NC}"
+curl -fsSL https://tailscale.com/install.sh | sh
 
-echo -e "${CYN}📁 Adding Repo To Apt repositoriee${NC}"
-echo 'deb [signed-by=/usr/share/keyrings/cloudflare-public-v2.gpg] https://pkg.cloudflare.com/cloudflared any main' | sudo tee /etc/apt/sources.list.d/cloudflared.list
-
-echo -e "${RED}Installing Cloudflare${NC}"
-sudo apt-get update && sudo apt-get install cloudflared
-clear
-
-echo -e "${RED}Cloudflare Installed Successfully✅${NC}"
+echo -e "${CYN}Tailscale Up${NC}"
+sudo tailscale up

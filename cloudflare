@@ -39,6 +39,7 @@ case $opt in
     ;;
   2)
     sudo cloudflared service uninstall
+    exit 0
     ;;
   3)
     exit 0
